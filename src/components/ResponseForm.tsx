@@ -35,7 +35,7 @@ const ResponseForm = ({ ticketId }: { ticketId: number }) => {
     if (!response.ok) {
       throw new Error("Error while making the response. Try Again ");
     }
-
+    console.log("Response made to the ticket. An email would be sent here.")
     revalidateResponses();
     setIsResponding(false);
   };

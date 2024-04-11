@@ -42,6 +42,8 @@ const TicketStatus: React.FC<TicketStatusProps> = ({ status, ticketId }) => {
       throw new Error("Error while updating the ticket status. Try Again ");
     }
 
+
+    console.log("The ticket status has been changed. An email would be sent here.");
     revalidateTickets()
     setIsBeingChanged(false);
   };
