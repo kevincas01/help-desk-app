@@ -16,7 +16,9 @@ async function getData() {
      cache: "no-store",
    }
  );
-
+  if (!response.ok) {
+    throw new Error("Error while getting the tickets. Try Again ");
+  }
 
   return response.json();
 }

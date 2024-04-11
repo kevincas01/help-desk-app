@@ -2,6 +2,8 @@
 import { revalidateTickets } from '@/app/actions';
 import React, { useState } from 'react'
 
+import { BASE_API_URL } from "../utils/constants";
+
 interface TicketStatusProps {
   status: string;
   ticketId: number;
@@ -26,13 +28,16 @@ const TicketStatus: React.FC<TicketStatusProps> = ({ status, ticketId }) => {
 
     const requestBody = JSON.stringify({ newStatus, ticketId });
 
-    const response = await fetch("/api/ticket", {
+    const response = await fetch(`${BASE_API_URL}/api/ticket`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: requestBody,
     });
+    if (!response.ok) {
+      throw new Error("Error while updating the ticket status. Try Again ");
+    }
 
     revalidateTickets()
     setIsBeingChanged(false);

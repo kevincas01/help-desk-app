@@ -8,7 +8,7 @@ interface TicketResponse {
   text: string;
 }
 const getData = async (ticketId: number) => {
-  try {
+  
     const response = await fetch(
       `${BASE_API_URL}/api/response?ticketId=${ticketId}`,
       {
@@ -16,10 +16,11 @@ const getData = async (ticketId: number) => {
        next: { tags: ['responses'] } }
     );
 
+    if (!response.ok) {
+      throw new Error("Error while getting the responses. Try Again ");
+    }
     return response.json();
-  } catch (err) {
-    console.error(err);
-  }
+  
 };
 const Responses = async ({ ticketId }: { ticketId: number }) => {
   const responses = await getData(ticketId);

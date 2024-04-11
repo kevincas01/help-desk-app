@@ -29,6 +29,10 @@ const ResponseForm = ({ ticketId }: { ticketId: number }) => {
       body: requestBody,
     });
 
+    if (!response.ok) {
+      throw new Error("Error while making the response. Try Again ");
+    }
+
     revalidateResponses();
     setIsResponding(false);
   };

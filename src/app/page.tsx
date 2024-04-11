@@ -5,6 +5,9 @@ import Image from "next/image";
 
 import { createRef, FormEvent, useRef, useState } from "react";
 
+
+import { BASE_API_URL } from "../utils/constants";
+
 import { ToastContainer, toast, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -24,13 +27,17 @@ export default function Home() {
 
    const requestBody = JSON.stringify({ name, email, description });
 
-   const response = await fetch("/api/ticket", {
+   const response = await fetch(`${BASE_API_URL}/api/ticket`, {
      method: "POST",
      headers: {
        "Content-Type": "application/json",
      },
      body: requestBody,
    });
+
+   if(!response.ok){
+    throw new Error("Error while making the ticket. Try Again ")
+   }
 
     formRef.current?.reset();
     toast("Successfully Created Ticket!", {
