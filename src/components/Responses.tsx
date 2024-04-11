@@ -23,6 +23,9 @@ const getData = async (ticketId: number) => {
   
 };
 const Responses = async ({ ticketId }: { ticketId: number }) => {
+  if (!BASE_API_URL) {
+    return null;
+  }
   const responses = await getData(ticketId);
   return (
     <div className="my-2 border-t-2 border-black ">

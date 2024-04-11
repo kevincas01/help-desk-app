@@ -8,6 +8,9 @@ import { BASE_API_URL } from "../utils/constants";
 const ResponseForm = ({ ticketId }: { ticketId: number }) => {
   const [isResponding, setIsResponding] = useState(false);
 
+  if (!BASE_API_URL) {
+    return null;
+  }
   const handleButtonClick = () => {
     setIsResponding(true);
   };

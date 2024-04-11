@@ -11,6 +11,9 @@ interface TicketStatusProps {
 const TicketStatus: React.FC<TicketStatusProps> = ({ status, ticketId }) => {
   const [isBeingChanged, setIsBeingChanged] = useState(false);
 
+  if (!BASE_API_URL) {
+    return null;
+  }
   const getStatusStyle = (status: string): string => {
     switch (status) {
       case "NEW":

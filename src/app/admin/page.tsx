@@ -38,6 +38,9 @@ interface TicketResponse {
 }
 const Admin = async () => {
 
+  if (!BASE_API_URL) {
+    return null;
+  }
   const data= await getData()
 
   return (
