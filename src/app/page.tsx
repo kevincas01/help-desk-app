@@ -13,10 +13,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
 
+  const formRef = useRef<HTMLFormElement>(null);
+  
   if(!BASE_API_URL){
     return null
   }
-  const formRef = useRef<HTMLFormElement>(null);
 
   const submitTicket = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
