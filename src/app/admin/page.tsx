@@ -2,6 +2,12 @@ import TicketRow from "@/components/TicketRow";
 import React from "react";
 
 import { BASE_API_URL } from "../../utils/constants"
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Admin Page",
+  description: "View and manage help tickets.",
+};
 
 async function getData() {
  const response = await fetch(
